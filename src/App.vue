@@ -3,11 +3,11 @@
     <button class="theme-btn" id="btn-theme" v-on:click="darkMode">Dark mode</button>
   </div>
   <div v-if="isHelloWorldId">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/spike.jpg">
     <HelloWorld v-if="isHelloWorldId" msg="Hello world" />
   </div>
   <HelloWorld v-else msg="Bye world" />
-  <MyHobbies msg="These are my hobbies 😎" />
+  <MyHobbies msg="These are my hobbies" />
 </template>
 
 <script>
@@ -36,14 +36,14 @@ export default {
       return name.length;
     },
     darkMode() {
-      this.count ++;
+      this.count++;
       if (this.count % 2) {
         document.body.style.backgroundColor = '#31333D';
         document.body.style.color = '#F0F2FA';
         document.getElementById('btn-theme').innerHTML = 'Light mode';
       } else {
-        document.body.style.backgroundColor = 'white';
-        document.body.style.color = '#25629e';
+        document.body.style.backgroundColor = '#ECF2FF';
+        document.body.style.color = '#443C68';
         document.getElementById('btn-theme').innerHTML = 'Dark mode';
       }
     }
@@ -56,7 +56,8 @@ export default {
 
 body {
   font-family: 'Kanit', sans-serif;
-  color: #25629e;
+  color: #443C68;
+  background-color: #ECF2FF;
 }
 
 #app {
@@ -74,8 +75,28 @@ body {
 }
 
 #btn-theme {
-    padding: 5px;
-    border-radius: 5px;
-    font-family: inherit;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: inherit;
+  background-color: #FFF4D2;
+  border: none;
+  transition-duration: 0.4s;
+}
+
+img {
+  height: 205px;
+  margin: 15px 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+}
+
+img:hover {
+  height: 205px;
+  -webkit-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  -o-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3)
 }
 </style>
