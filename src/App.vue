@@ -7,13 +7,12 @@
     <HelloWorld v-if="isHelloWorldId" msg="Hello world" />
   </div>
   <HelloWorld v-else msg="Bye world" />
-  <MyHobbies msg="These are my hobbies" v-if="isDarkMode" darkMode="dark"/>
+  <MyHobbies msg="These are my hobbies" v-if="isDarkMode" darkMode="dark" />
   <MyHobbies msg="These are my hobbies" v-else darkMode="light" />
 
-<div v-for="(name, idx) in memes" :key="idx">
-  {{ name.memes }}
-</div>
-
+  <div v-for="(name, idx) in memes" :key="idx">
+    {{ name.memes }}
+  </div>
 </template>
 
 <script>
@@ -41,7 +40,7 @@ export default {
   },
   mounted() {
     axios.get("https://api.imgflip.com/get_memes")
-    .then((response) => (this.memes = response.data.data.memes));
+      .then((response) => (this.memes = response.data.data.memes));
   },
   methods: {
     letterCounter(name) {
