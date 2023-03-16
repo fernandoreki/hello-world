@@ -1,9 +1,11 @@
 <template>
     <div class="hobbies">
-        <h1>{{ msg }}</h1>
+        {{ verifyTheme() }}
+        <h1 v-if="isDarkMode">{{ msg }} 🌚</h1>
+        <h1 v-else>{{ msg }} 🌞</h1>
         <ul>
             <li v-for="(hobbie, idx) in hobbies" :key="idx" class="hobbies">
-                {{ hobbie }} <br><br> <button v-if="isDarkMode" v-on:click="getURL(idx)" class="btn-view">View more</button>
+                {{ hobbie }} <br><br> <button v-on:click="getURL(idx)" class="btn-view">View more</button>
             </li>
         </ul>
     </div>
@@ -13,21 +15,26 @@
 export default {
     name: 'MyHobbies',
     props: {
-        msg: String
+        msg: String,
+        darkMode: String
     },
     data() {
         return {
             hobbies: ['Skateboarding', 'Anime', 'Genshin impact', 'Listening to music'],
             hobbiesUrl: ['https://www.youtube.com/watch?v=F1sjuey25ug', 'https://www.crunchyroll.com/es/watch/G9DUEPGJ5/asteroid-blues', 'https://genshin.hoyoverse.com/es/home', 'https://www.youtube.com/watch?v=1TW3fbGM1CU'],
-            isDarkMode: true,
+            isDarkMode: false,
         }
     },
     methods: {
         getURL(idx) {
             window.open(this.hobbiesUrl[idx], '_blank');
         },
-        changeButtonColor() {
-            //this.isDarkMode = false
+        verifyTheme() {
+            if(this.darkMode === 'dark') {
+                this.isDarkMode = true;
+            } else {
+                this.isDarkMode = false;
+            }
         }
     }
 }

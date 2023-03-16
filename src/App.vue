@@ -7,7 +7,8 @@
     <HelloWorld v-if="isHelloWorldId" msg="Hello world" />
   </div>
   <HelloWorld v-else msg="Bye world" />
-  <MyHobbies msg="These are my hobbies" />
+  <MyHobbies msg="These are my hobbies" v-if="isDarkMode" darkMode="dark"/>
+  <MyHobbies msg="These are my hobbies" v-else darkMode="light" />
 </template>
 
 <script>
@@ -41,10 +42,12 @@ export default {
         document.body.style.backgroundColor = '#31333D';
         document.body.style.color = '#F0F2FA';
         document.getElementById('btn-theme').innerHTML = 'Light mode';
+        this.isDarkMode = true;
       } else {
         document.body.style.backgroundColor = '#ECF2FF';
         document.body.style.color = '#443C68';
         document.getElementById('btn-theme').innerHTML = 'Dark mode';
+        this.isDarkMode = false;
       }
     }
   }
@@ -92,7 +95,6 @@ img {
 }
 
 img:hover {
-  height: 205px;
   -webkit-transform: scale(1.3);
   -moz-transform: scale(1.3);
   -o-transform: scale(1.3);
