@@ -25,6 +25,10 @@ export default {
             isDarkMode: false,
         }
     },
+    mounted: {
+        
+    },
+
     methods: {
         getURL(idx) {
             window.open(this.hobbiesUrl[idx], '_blank');

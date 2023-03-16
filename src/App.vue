@@ -9,11 +9,17 @@
   <HelloWorld v-else msg="Bye world" />
   <MyHobbies msg="These are my hobbies" v-if="isDarkMode" darkMode="dark"/>
   <MyHobbies msg="These are my hobbies" v-else darkMode="light" />
+
+<div v-for="(name, idx) in memes" :key="idx">
+  {{ name.memes }}
+</div>
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue';
 import MyHobbies from './components/MyHobbies.vue';
+import axios from 'axios';
 
 /* tarea */
 
@@ -30,7 +36,12 @@ export default {
       alumnos: ['Ignacio', 'Diego', 'Raul'],
       isDarkMode: false,
       count: 0,
+      memes: null,
     }
+  },
+  mounted() {
+    axios.get("https://api.imgflip.com/get_memes")
+    .then((response) => (this.memes = response.data.data.memes));
   },
   methods: {
     letterCounter(name) {
